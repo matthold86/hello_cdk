@@ -1,5 +1,6 @@
 
 # Create AWS S3 Bucket Using AWS CDK
+#### Matthew Holden
 
 ## Summary
 
@@ -8,7 +9,7 @@ This project provides the basic structure for deploying an AWS S3 bucket using t
 
 ## Replicate the Work
 
-Initialize the app by using the cdk init command. Specify the app template and your preferred programming language with the --language option.
+Initialize the app by using the cdk init command. Specify the app template and the preferred programming language with the --language option.
 
 ```
 $cdk init app --language python
@@ -50,6 +51,6 @@ Below is a screenshot of the S3 bucket created from this cdk stack deployment.
 
 ## AWS CodeWhisperer
 
-AWS CodeWhisperer is a valuable tool especially for deploying cdk stacks. The LLM was trained code internal to Amazon so the suggestions for writing code compatible with AWS Services is usually helpful and accurate. One particularly helpful area is navigating the IAM Users and Roles. Provided a general description of what the User needs to be able to accomplish on AWS, CodeWhisperer will respond with the appropriate permission policies required for the User. This expedited deployment while ensuring AWS security best practices.
+AWS CodeWhisperer is a valuable tool especially for deploying cdk stacks. The LLM is trained on code internal to Amazon so the suggestions for writing code compatible with AWS Services is usually helpful and accurate. One particularly helpful area is navigating the IAM Users and Roles. Provided a general description of what the User needs to be able to accomplish on AWS, CodeWhisperer will respond with the appropriate permission policies required for the User. This collaboration with CodeWhisperer expedites deployment while ensuring AWS security best practices are followed.
 
 
