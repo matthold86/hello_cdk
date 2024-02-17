@@ -1,7 +1,12 @@
 
 # Create AWS S3 Bucket Using AWS CDK
 
-This is a blank project for CDK development with Python.
+## Summary
+
+This project is provides the basic structure for deploying an AWS S3 bucket using the AWS CDK toolkit with python.
+
+
+## Replicate the Work
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
@@ -31,28 +36,35 @@ If you are a Windows platform, you would activate the virtualenv like this:
 % .venv\Scripts\activate.bat
 ```
 
-Once the virtualenv is activated, you can install the required dependencies.
+Once the virtualenv is activated, we can install the required dependencies.
 
 ```
 $ pip install -r requirements.txt
 ```
 
-At this point you can now synthesize the CloudFormation template for this code.
+It's important to add a few S3 bucket properties like versioning and encryption. The screenshot below shows the modified initialization code that adds `versioned=True` and `S3 Managed Encryption`. When deploying the cdk stack, we'll need appropriate AWS credentials configured locally to successfully deploy.
+
+![image](https://github.com/matthold86/hello_cdk/assets/114833075/497a2547-4ff0-4df7-9f08-f5cd8779ca70)
+
+At this point we can now synthesize the CloudFormation template for this code.
 
 ```
 $ cdk synth
 ```
 
-To add additional dependencies, for example other CDK libraries, just add
-them to your `setup.py` file and rerun the `pip install -r requirements.txt`
-command.
 
-## Useful commands
+Once the CloudFormation template is created, you can deploy the stack with the default AWS credentials on your local environment. I created a new user with proper access credentials for this project before deploying. Once the new User was configured locally, deployment was easy! 
 
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
+```
+$ cdk deploy
+```
 
-Enjoy!
+Below is a screenshot of the S3 bucket created from this cdk stack deployment.
+
+![image](https://github.com/matthold86/hello_cdk/assets/114833075/ef03ff61-f15e-43dd-a8d4-0f9ce927e673)
+
+## AWS CodeWhisperer
+
+AWS CodeWhisperer is a valuable tool especially for deploying cdk stacks. The LLM was trained code internal to Amazon so the suggestions for writing code compatible with AWS Services is usually helpful and accurate. One particularly helpful area is navigating the IAM Users and Roles. Provided a general description of what the User needs to be able to accomplish on AWS, CodeWhisperer will respond with the appropriate permission policies required for the User. This expedited deployment while ensuring AWS security best practices.
+
+
