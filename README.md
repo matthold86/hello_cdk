@@ -8,32 +8,16 @@ This project provides the basic structure for deploying an AWS S3 bucket using t
 
 ## Replicate the Work
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-This project is set up like a standard Python project.  The initialization
-process also creates a virtualenv within this project, stored under the `.venv`
-directory.  To create the virtualenv it assumes that there is a `python3`
-(or `python` for Windows) executable in your path with access to the `venv`
-package. If for any reason the automatic creation of the virtualenv fails,
-you can create the virtualenv manually.
-
-To manually create a virtualenv on MacOS and Linux:
+Initialize the app by using the cdk init command. Specify the app template and your preferred programming language with the --language option.
 
 ```
-$ python -m venv .venv
+$cdk init app --language python
 ```
 
-After the init process completes and the virtualenv is created, you can use the following
-step to activate your virtualenv.
+After the app has been created, enter the following command to activate the app's Python virtual environment on a Windows operating system.
 
 ```
-$ source .venv/bin/activate
-```
-
-If you are a Windows platform, you would activate the virtualenv like this:
-
-```
-% .venv\Scripts\activate.bat
+$ .venv\Scripts\activate
 ```
 
 Once the virtualenv is activated, we can install the required dependencies.
@@ -42,18 +26,19 @@ Once the virtualenv is activated, we can install the required dependencies.
 $ pip install -r requirements.txt
 ```
 
-It's important to add a few S3 bucket properties like versioning and encryption. The screenshot below shows the modified initialization code that adds `versioned=True` and `S3 Managed Encryption`. When deploying the cdk stack, we'll need appropriate AWS credentials configured locally to successfully deploy.
+At this point, the CDK app contains a single stack. Next, we will define an Amazon Simple Storage Service (Amazon S3) bucket resource within the stack. To do this, we will import and use the Bucket L2 construct from the AWS Construct Library. It's important to add a few S3 bucket properties like versioning and encryption. The screenshot below shows the CDK Stack intialization code that adds `versioned=True` and `S3 Managed Encryption`. When deploying the cdk stack, we'll need appropriate AWS credentials configured locally to successfully deploy.
 
 ![image](https://github.com/matthold86/hello_cdk/assets/114833075/497a2547-4ff0-4df7-9f08-f5cd8779ca70)
 
-At this point we can now synthesize the CloudFormation template for this code.
+
+We can now synthesize the CloudFormation template for this code.
 
 ```
 $ cdk synth
 ```
 
 
-Once the CloudFormation template is created, you can deploy the stack with the default AWS credentials on your local environment. I created a new user with proper access credentials for this project before deploying. Once the new User was configured locally, deployment was easy! 
+Once the CloudFormation template is created, deploy the stack with the default AWS credentials on your local environment. I created a new user with proper access credentials for this project before deploying. Once the new User was configured locally, deployment was easy! 
 
 ```
 $ cdk deploy
