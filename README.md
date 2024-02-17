@@ -3,7 +3,7 @@
 
 ## Summary
 
-This project is provides the basic structure for deploying an AWS S3 bucket using the AWS CDK toolkit with python.
+This project provides the basic structure for deploying an AWS S3 bucket using the AWS CDK toolkit with python.
 
 
 ## Replicate the Work
