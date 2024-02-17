@@ -1,6 +1,6 @@
 
 # Create AWS S3 Bucket Using AWS CDK
-#### Matthew Holden
+#### Author: Matthew Holden
 
 ## Summary
 
